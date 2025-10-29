@@ -44,9 +44,9 @@ document.addEventListener('click', function(e) {
 function toggleFAQ(button) {
     const answer = button.nextElementSibling;
     const icon = button.querySelector('span:last-child');
-    
+
     answer.classList.toggle('active');
-    
+
     if (answer.classList.contains('active')) {
         icon.textContent = '−';
     } else {
