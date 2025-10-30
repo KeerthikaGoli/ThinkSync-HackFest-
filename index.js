@@ -86,6 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
         section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
         observer.observe(section);
     });
+    // Initialize interactive UI components
+    initThemesCarousel();
 });
 
 
@@ -146,3 +148,75 @@ function animate() {
 window.addEventListener("resize", init);
 init();
 animate();
+
+/* Problem Themes carousel: buttons, drag-to-scroll and keyboard support */
+function initThemesCarousel() {
+    const track = document.getElementById('themesTrack');
+    if (!track) return;
+
+    const leftBtn = document.querySelector('.scroll-btn.left');
+    const rightBtn = document.querySelector('.scroll-btn.right');
+
+    // Button click behavior
+    if (leftBtn) leftBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -Math.round(track.clientWidth * 0.75), behavior: 'smooth' });
+        track.focus();
+    });
+
+    if (rightBtn) rightBtn.addEventListener('click', () => {
+        track.scrollBy({ left: Math.round(track.clientWidth * 0.75), behavior: 'smooth' });
+        track.focus();
+    });
+
+    // Pointer drag support
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    track.addEventListener('pointerdown', (e) => {
+        isDown = true;
+        track.setPointerCapture(e.pointerId);
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+        track.classList.add('dragging');
+    });
+
+    track.addEventListener('pointermove', (e) => {
+        if (!isDown) return;
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.2; // scroll-fast
+        track.scrollLeft = scrollLeft - walk;
+    });
+
+    const endDrag = (e) => {
+        isDown = false;
+        try { track.releasePointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+        track.classList.remove('dragging');
+    };
+
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+    track.addEventListener('pointerleave', () => { isDown = false; track.classList.remove('dragging'); });
+
+    // Keyboard support
+    track.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            track.scrollBy({ left: -220, behavior: 'smooth' });
+            e.preventDefault();
+        } else if (e.key === 'ArrowRight') {
+            track.scrollBy({ left: 220, behavior: 'smooth' });
+            e.preventDefault();
+        }
+    });
+
+    // Optional: hide/show buttons based on scroll position
+    const updateButtons = () => {
+        if (!leftBtn || !rightBtn) return;
+        leftBtn.style.opacity = track.scrollLeft > 10 ? '1' : '0.4';
+        const maxScroll = track.scrollWidth - track.clientWidth - 1;
+        rightBtn.style.opacity = track.scrollLeft < maxScroll ? '1' : '0.4';
+    };
+
+    track.addEventListener('scroll', () => { updateButtons(); });
+    updateButtons();
+}
