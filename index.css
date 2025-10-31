@@ -606,44 +606,100 @@ footer {
 
 
 @media (max-width: 768px) {
-    .hero h1 { font-size: 48px; }
-    .hero img { width: 150px; height: 150px; }
-    .section-title { font-size: 36px; }
+    /* Navigation */
+    .nav-content {
+        padding: 12px 16px;
+    }
+    .nav-logo img {
+        width: 40px;
+        height: 40px;
+    }
+    .nav-text {
+        font-size: 16px;
+    }
     .nav-links { display: none; }
     .mobile-menu-btn { display: flex; }
     .mobile-menu { display: block; }
-    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-
-    .footer-links-container { gap: 12px; }
-
- 
+    
+    /* Hero Section */
+    .hero {
+        padding-top: 80px;
+        min-height: 90vh;
+    }
+    .hero h1 { 
+        font-size: 42px;
+        line-height: 1.2;
+    }
+    .hero img { 
+        width: 140px;
+        height: 140px;
+        margin-bottom: 24px;
+    }
+    .hero p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    
+    /* Section Titles */
+    .section-title { 
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+    
+    /* Grids */
+    .grid-2, .grid-3, .grid-4 { 
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    /* Timeline */
+    .timeline-date {
+        width: 80px;
+        height: 80px;
+        font-size: 14px;
+    }
+    
+    /* Contact Section */
+    .contact-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+    }
+    
+    /* Partners */
+    .partner-logo-container {
+        width: 140px;
+        height: 140px;
+        padding: 16px;
+    }
+    .partner-type {
+        font-size: 18px;
+    }
+    
+    /* Footer */
     .footer-content-grid {
         grid-template-columns: 1fr;
         gap: 40px;
         text-align: center;
     }
-
     .footer-info {
-       
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-
     .footer-title {
         text-align: center;
         margin-bottom: 16px;
     }
-
     .footer-socials {
-        justify-content: center; 
+        justify-content: center;
     }
-
     .footer-links-container {
         align-items: center !important;
+        gap: 12px;
     }
-
-   
+    
+    /* WhatsApp Float */
     .whatsapp-float {
         width: 50px;
         height: 50px;
@@ -651,11 +707,102 @@ footer {
         right: 20px;
         font-size: 25px;
     }
+
+    /* Glass Cards */
+    .glass {
+        padding: 24px;
+    }
+
+    /* Button Adjustments */
+    .btn {
+        padding: 12px 24px;
+        font-size: 14px;
+        margin: 6px;
+    }
 }
 
 @media (max-width: 480px) {
-    .hero h1 { font-size: 36px; }
-    .hero p { font-size: 18px; }
-    .section-title { font-size: 28px; }
-    .btn { padding: 12px 24px; font-size: 14px; }
+    /* Hero Section */
+    .hero h1 { 
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+    .hero p { 
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+    .hero img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    /* Section Titles */
+    .section-title { 
+        font-size: 28px;
+        margin-bottom: 32px;
+    }
+    
+    /* Container Padding */
+    .container {
+        padding: 0 16px;
+    }
+    section {
+        padding: 60px 16px;
+    }
+    
+    /* Timeline Adjustments */
+    .timeline-date {
+        width: 70px;
+        height: 70px;
+        font-size: 13px;
+    }
+    
+    /* Cards and Text */
+    .glass {
+        padding: 20px;
+    }
+    .faq-btn {
+        padding: 16px;
+        font-size: 16px;
+    }
+    .faq-answer {
+        padding: 0 16px 16px;
+        font-size: 14px;
+    }
+    
+    /* Contact Form */
+    .form-input {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    /* Partners */
+    .partner-logo-container {
+        width: 120px;
+        height: 120px;
+        padding: 12px;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 40px 16px;
+    }
+    .footer-title {
+        font-size: 16px;
+    }
+    .footer-link {
+        font-size: 13px;
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        margin: 4px;
+    }
+    
+    /* Grid Gaps */
+    .grid {
+        gap: 20px;
+    }
 }
